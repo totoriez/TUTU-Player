@@ -1,0 +1,241 @@
+:root {
+  --color-primary: #ffbf00;
+  --color-secondary: #ffe135;
+  --color-accent: #99cc99;
+  --color-headings: #2b2e4a;
+  --color-body: #918ca4;
+  --color-body-darker: #5c5577;
+  --color-borders: #ccc;
+  --border-radius: 30px;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.navbar {
+  width: 100vw;
+  height: 10vh;
+  background-color: var(--color-primary);
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  text-align: center;
+  line-height: 10vh;
+  padding-left: 2rem;
+  display: flex;
+  color: var(--color-headings);
+}
+.nav-icon {
+  width: 2rem;
+  padding-right: 0.5rem;
+}
+.search-container {
+  line-height: 10vh;
+  padding-right: 2rem;
+}
+
+.inputarea {
+  padding: 0.7rem;
+  border: 0;
+  border-radius: 5px;
+  margin-right: -4px;
+  font-size: 1rem;
+}
+.btn {
+  border: 0;
+  padding: 0.7rem;
+  background-color: var(--color-body-darker);
+  border-radius: 5px;
+  color: var(--color-secondary);
+  font-size: 1rem;
+  transition: all 0.7s;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: var(--color-headings);
+  transform: scale(1.1);
+}
+
+.main-container {
+  width: 100vw;
+  height: 80vh;
+  display: grid;
+  grid-template-columns: 20vw 1px 1fr 1px 20vw;
+  background: rgb(188, 212, 230);
+  background: linear-gradient(
+    90deg,
+    rgba(188, 212, 230, 1) 0%,
+    rgba(241, 80, 80, 0.2) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+}
+
+.sidebar {
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 20vw;
+  height: 80vh;
+}
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+.song-result {
+  padding: 0.7rem;
+  line-height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.song-result:hover {
+  background-color: var(--color-secondary);
+  opacity: 0.5;
+  font-weight: 700;
+}
+.song-result .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding-right: 0.5rem;
+}
+.song-result .icon:hover {
+  cursor: pointer;
+}
+.song-title {
+  display: flex;
+}
+.title {
+  align-self: center;
+  line-height: 1.5;
+  font-size: 0.8rem;
+  max-width: 83.8%;
+}
+
+.control {
+  width: 100vw;
+  height: 10vh;
+  background-color: #f2f3f4;
+}
+
+.myaudio {
+  width: 100vw;
+}
+
+.play-body {
+  width: 60vw;
+  height: 80vh;
+  display: flex;
+}
+
+.song-img {
+  width: 15rem;
+  align-self: center;
+  margin: 0 auto;
+}
+.song-img img {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.2);
+}
+.line {
+  display: inline-block;
+  width: 1px;
+  height: 80vh;
+  background: linear-gradient(
+    244deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(161, 202, 241, 1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+.hot-comments {
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 20vw;
+  height: 80vh;
+  justify-self: end;
+}
+
+.hot-comments::-webkit-scrollbar {
+  display: none;
+}
+.comment-container {
+  padding: 0.7rem;
+  line-height: 100%;
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.7s;
+  align-items: center;
+}
+.comment-body {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  row-gap: 0.5rem;
+}
+.comment-header {
+  text-align: center;
+}
+.name {
+  color: #3d2b1f;
+  font-weight: 700;
+}
+.comment-img {
+  width: 2em;
+  height: 2em;
+  border-radius: 5px;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.playing {
+  animation: rotation 8s linear infinite;
+  -moz-animation: rotation 8s linear infinite;
+  -webkit-animation: rotation 8s linear infinite;
+  -o-animation: rotation 8s linear infinite;
+  -webkit-animation-play-state: running;
+}
+
+.autoRotate {
+  animation: rotation 8s linear infinite;
+  -moz-animation: rotation 8s linear infinite;
+  -webkit-animation: rotation 8s linear infinite;
+  -o-animation: rotation 8s linear infinite;
+  -webkit-animation-play-state: paused;
+}
+
+video {
+  position: fixed;
+  width: 800px;
+  height: 546px;
+  left: 50%;
+  top: 50%;
+  margin-top: -273px;
+  transform: translateX(-50%);
+  z-index: 990;
+}
+.mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 980;
+  background-color: rgba(0, 0, 0, 0.8);
+}

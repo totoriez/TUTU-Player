@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUTU Player</title>
+        <link rel="icon" href="image/favicon.ico">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+    <div id="player">
+        <nav class="navbar">
+            <div class="logo">
+                <svg class="nav-icon">
+                    <use href="image/sprite.svg#diqiu"></use>
+                </svg>
+                <h1>TUTU Player</h1>
+            </div>
+            <div class="search-container">
+                <input type="text" placeholder="song / singer / others..." class="inputarea" v-model="query" @keyup.enter="searchMusic">
+                <button class="btn" @click="searchMusic">search</button>
+            </div>
+        </nav>
+        <main class="main-container">
+            <div class="background"></div>
+            <nav class="sidebar">
+                <ul class="song_list" v-for="item in musicList">
+                    <li class="song-result">
+                    <div class="song-title">
+                        <svg class="icon" @click="playMusic(item.id)">
+                            <use href="image/sprite.svg#bofang"></use>
+                        </svg>
+                        <span class="title">{{ item.name }}</span>
+                    </div>
+                    <div class="icon-container" v-show="item.mvid !== 0" @click="playMV(item.mvid)">
+                        <svg class="icon">
+                            <use href="image/sprite.svg#shipin"></use>
+                        </svg>
+                    </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="line" v-show="musicList.length !== 0"></div>
+            <section class="play-body">
+                <div class="song-img" :class="{playing:isPlaying, autoRotate:isPlaying == false}">
+                    <img :src="imgUrl" alt="image of the song" v-show="imgUrl.length !==0" >
+                </div>
+            </section>
+            <div class="line" v-show="hotComments.length !== 0"></div>
+            <section class="hot-comments">
+                <h3 v-show="hotComments.length !== 0" class="comment-header">Hot Comments</h3>
+                <div class="comment-list">
+                    <dl v-for="item in hotComments" class="comment-container">
+                        <dt><img :src="item.user.avatarUrl" alt="image of the user" class="comment-img" ></dt>
+                        <div class="comment-body">
+                            <dd class="name">{{ item.user.nickname }}</dd>
+                            <dd class="comment-content">{{ item.content }}</dd>
+                        </div>
+                    </dl>
+                </div>
+            </section>
+        </main>
+        <footer class="control">
+            <audio :src="musicUrl" loop controls autoplay class="myaudio" @play="play" @pause="pause"></audio>
+        </footer>
+        <section class="video-play" v-show="isShow">
+            <video :src="mvUrl" controls autoplay></video>
+            <div class="mask" @click="hide"></div>
+        </section>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
