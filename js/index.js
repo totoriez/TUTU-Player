@@ -17,6 +17,7 @@
              axios.get('https://autumnfish.cn/search?keywords=' + this.query)
              .then(function(response){
                 that.musicList = response.data.result.songs;
+                console.log(response.data.result.songs)
              }, function(err) {
                  console.log(err);
              })

@@ -104,6 +104,12 @@ body {
   height: 1.5rem;
   padding-right: 0.5rem;
 }
+.icon-play {
+  transition: transform 0.7s;
+}
+.icon-play:hover {
+  transform: rotate(30deg);
+}
 .song-result .icon:hover {
   cursor: pointer;
 }

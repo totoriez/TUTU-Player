@@ -29,12 +29,12 @@
                 <ul class="song_list" v-for="item in musicList">
                     <li class="song-result">
                     <div class="song-title">
-                        <svg class="icon" @click="playMusic(item.id)">
+                        <svg class="icon icon-play" @click="playMusic(item.id)">
                             <use href="image/sprite.svg#bofang"></use>
                         </svg>
-                        <span class="title">{{ item.name }}</span>
+                        <span class="title">{{ item.name}}</span>
                     </div>
-                    <div class="icon-container" v-show="item.mvid !== 0" @click="playMV(item.mvid)">
+                    <div class="icon-container" v-if="item.mvid !== 0" @click="playMV(item.mvid)">
                         <svg class="icon">
                             <use href="image/sprite.svg#shipin"></use>
                         </svg>
